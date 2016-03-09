@@ -1,0 +1,19 @@
+{
+  "name": "kappa-node-sql",
+  "version": "1.0.0",
+  "description": "Example of using the pg module in a express app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mulchy/kappa-node-sql.git"
+  },
+  "author": "Ryan Mulcahy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mulchy/kappa-node-sql/issues"
+  },
+  "homepage": "https://github.com/mulchy/kappa-node-sql#readme"
+}
