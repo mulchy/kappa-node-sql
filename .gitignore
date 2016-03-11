@@ -1,4 +1,4 @@
 node_modules
 npm-debug.log
-public/vendors
-public/scripts
+server/public/vendors
+server/public/scripts
