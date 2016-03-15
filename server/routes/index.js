@@ -2,9 +2,9 @@ var router = require('express').Router();
 var path = require('path');
 var pg = require('pg');
 var connectionString = '';
-
 if(process.env.DATABASE_URL != undefined) {
-  connectionString = process.env.DATABASE_URL + 'ssl';
+  pg.defaults.ssl = true;
+  connectionString = process.env.DATABASE_URL;
 } else {
   connectionString = 'postgres://localhost:5432/node-app';
 }
