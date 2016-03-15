@@ -4,8 +4,9 @@
   "description": "Example of using the pg module in a express app",
   "main": "server/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "grunt && node server/app.js"
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "postinstall": "grunt && node schema.js",
+      "start": "node server/app.js"
   },
   "repository": {
     "type": "git",
