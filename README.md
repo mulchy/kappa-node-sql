@@ -5,7 +5,7 @@ This app requires an existing Postgres DB to run locally. To create it, do the f
 
 In your terminal
 ```
-$ createdb node-app
+createdb node-app
 ```
 
 To install dependencies, build the JS, and lauch the app: 
