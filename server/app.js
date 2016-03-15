@@ -20,5 +20,4 @@ app.use(bodyParser.urlencoded({extended: true}));
 // dynamic routes
 app.use('/', indexRouter);
 
-
 app.listen(port, function() {console.log("Listening for requests on port:", port)});

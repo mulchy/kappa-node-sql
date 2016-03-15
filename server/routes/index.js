@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var path = require('path');
 var pg = require('pg');
+
 var connectionString = '';
 if(process.env.DATABASE_URL != undefined) {
   pg.defaults.ssl = true;
@@ -15,14 +16,14 @@ router.post('/people', function (req, res) {
     if (err) {
       console.log('error connecting to DB:', err);
       res.status(500).send(err);
-      // sending in a truthy value removes the connection from the pool, rather than returning it.
-      done(client);
+      done();
       return;
     }
 
     // we have successfully connected, try to query
-    var query = client.query('INSERT INTO people (name, address) VALUES ($1, $2)',
-    [req.body.name, req.body.address]);
+    var query = client.query('INSERT INTO people (name, address) VALUES ($1, $2)' +
+                             'RETURNING id, name, address',
+                             [req.body.name, req.body.address]);
     var result = [];
 
     // store each row in an array
@@ -40,7 +41,7 @@ router.post('/people', function (req, res) {
     query.on('error', function(error) {
       console.log('error querying DB:', error);
       res.status(500).send(error);
-      done(client);
+      done();
     });
   });
 });
@@ -50,7 +51,7 @@ router.get('/people', function(req, res) {
     if (err) {
       console.log('error connecting to DB:', err);
       res.status(500).send(err);
-      done(client);
+      done();
       return;
     }
 
@@ -69,7 +70,7 @@ router.get('/people', function(req, res) {
     query.on('error', function(error) {
       console.log('error querying DB:', error);
       res.status(500).send(error);
-      done(client);
+      done();
     });
   });
 });
